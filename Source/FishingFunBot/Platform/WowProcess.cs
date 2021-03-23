@@ -155,22 +155,32 @@ namespace FishingFun
 
         public static void RightClickMouse_LiamCooper(ILog logger, System.Drawing.Point position)
         {
-            var activeProcess = GetActiveProcess();
-            var wowProcess = WowProcess.Get();
-            if (wowProcess != null)
-            {
-                mouse_event((int)MouseEventFlags.RightUp, position.X, position.Y, 0, 0);
-                var oldPosition = System.Windows.Forms.Cursor.Position;
+//          var activeProcess = GetActiveProcess();
+//          var wowProcess = WowProcess.Get();
+//          if (wowProcess != null)
+//          {
+                //mouse_event((int)MouseEventFlags.RightUp, position.X, position.Y, 0, 0);
+              var oldPosition = System.Windows.Forms.Cursor.Position;
 
                 Thread.Sleep(200);
-                System.Windows.Forms.Cursor.Position = position;
+              System.Windows.Forms.Cursor.Position = position;
                 Thread.Sleep(LootDelay);
-                mouse_event((int)MouseEventFlags.RightDown, position.X, position.Y, 0, 0);
-                Thread.Sleep(30 + random.Next(0, 47));
-                mouse_event((int)MouseEventFlags.RightUp, position.X, position.Y, 0, 0);
-                RefocusOnOldScreen(logger, activeProcess, wowProcess, oldPosition);
-                Thread.Sleep(LootDelay / 2);
-            }
+            mouse_event((int)MouseEventFlags.RightDown, position.X, position.Y, 0, 0);
+            Thread.Sleep(30 + random.Next(0, 47));
+            mouse_event((int)MouseEventFlags.RightUp, position.X, position.Y, 0, 0);
+            Thread.Sleep(30 + random.Next(0, 47));
+            mouse_event((int)MouseEventFlags.RightDown, position.X, position.Y, 0, 0);
+            Thread.Sleep(30 + random.Next(0, 47));
+            mouse_event((int)MouseEventFlags.RightUp, position.X, position.Y, 0, 0);
+            Thread.Sleep(30 + random.Next(0, 47));
+            mouse_event((int)MouseEventFlags.RightDown, position.X, position.Y, 0, 0);
+            Thread.Sleep(30 + random.Next(0, 47));
+            mouse_event((int)MouseEventFlags.RightUp, position.X, position.Y, 0, 0);
+                    Thread.Sleep(30 + random.Next(0, 47));
+            System.Windows.Forms.Cursor.Position = oldPosition;
+            //          RefocusOnOldScreen(logger, activeProcess, wowProcess, oldPosition);
+            Thread.Sleep(LootDelay / 2);
+//          }
         }
 
         private static void RefocusOnOldScreen(ILog logger, Process activeProcess, Process wowProcess, System.Drawing.Point oldPosition)
